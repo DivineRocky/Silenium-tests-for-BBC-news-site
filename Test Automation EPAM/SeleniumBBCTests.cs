@@ -15,6 +15,7 @@ namespace Test_Automation_EPAM
         public void Initialize()
         {
             _driver = new ChromeDriver();
+            _driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 7);
         }
 
         [TestMethod]
@@ -34,7 +35,6 @@ namespace Test_Automation_EPAM
 
             //Act
             element.Click();
-            Thread.Sleep(3000);
             IWebElement headLine = _driver.FindElement(By.XPath("/html/body/div[7]/div/div[4]/div[2]/div/div/div/div/div[1]/div/div/div[1]/div/a/h3"));
             string elementText = headLine.Text;
 
@@ -57,20 +57,33 @@ namespace Test_Automation_EPAM
 
             //Act
             element.Click();
-            try
-            {
-                Thread.Sleep(3000);
-                headLine = _driver.FindElement(By.XPath(elementXPath));
-            }
-            catch (Exception)
-            {
-                Thread.Sleep(3000);
-                headLine = _driver.FindElement(By.XPath(elementXPath));  
-            }
+            headLine = _driver.FindElement(By.XPath(elementXPath));
             string elementText = headLine.Text;
 
             //Assert
             Assert.AreEqual(expectedResult, elementText);           
+        }
+
+        [TestMethod]
+        public void VerifySearchBar()
+        {
+            //Arrange
+            _driver.Navigate().GoToUrl("https://www.bbc.com");
+            IWebElement element = _driver.FindElement(By.XPath("/html/body/header/div/div[1]/nav/div/ul/li[2]/a"));
+            element.Click();
+            IWebElement category = _driver.FindElement(By.XPath("/html/body/div[7]/div/div[4]/div[2]/div/div/div/div/div[1]/div/div/div[1]/ul/li[2]/a/span"));
+            string categoryResult = category.Text;
+
+            //Act
+            IWebElement searchBar = _driver.FindElement(By.XPath("/html/body/header/div/div[1]/div[3]/form/div/input[1]"));
+            searchBar.SendKeys(categoryResult);
+            IWebElement startSearch = _driver.FindElement(By.XPath("/html/body/header/div/div[1]/div[3]/form/div/button"));
+            startSearch.Click();
+            IWebElement searchResult = _driver.FindElement(By.XPath("/html/body/div[6]/section[2]/ol[1]/li[1]/article/div/h1/a"));
+
+            //Assert
+            Assert.AreEqual(categoryResult, searchResult.Text);
+
         }
 
         [TestCleanup]
