@@ -76,6 +76,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BBCFacade.cs" />
+    <Compile Include="BBCTestsBase.cs" />
+    <Compile Include="SecondTaskBBCTests.cs" />
     <Compile Include="SpecFlowFeature1Steps.cs" />
     <Compile Include="FirstTaskBBCTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
