@@ -1,54 +1,102 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using System;
+using System.Linq;
 
 namespace Test_Automation_EPAM
 {
     [TestClass]
     public class SecondTaskBBCTests : BBCTestsBase
     {
-        private void GoToSubmissionForm()
+        private readonly string _nameMissingErrorText = "Name can't be blank";
+        private readonly string _emailMissingErrorText = "Email address can't be blank";
+        private readonly string _formTextErrorText = "can't be blank";
+
+        [TestMethod]
+        public void SubmitingForm_EmptyForm_AllErrorsApeared()
         {
-            _bbcFacade.GoToNews();
-            string secondMoreElementXPath = "/html/body/div[7]/header/div[2]/div/div[1]/nav/ul/li[15]";
-            _bbcFacade.ClickOnXPath(secondMoreElementXPath);
-            var haveYouSayElement = _driver.FindElement(By.PartialLinkText("Have Your Say"));
-            haveYouSayElement.Click();
-            string questionForBBCXPath = "/html/body/div[7]/div/div[1]/div/div[2]/div[2]/div[1]/div/div[2]/div/a";
-            _bbcFacade.ClickOnXPath(questionForBBCXPath);
+            //Arrange
+            GoToNews();
+            BBCNewsPage BBCNewsPage = new BBCNewsPage(_driver);
+            BBCNewsPage.GoToHaveYourSay();
+            HaveYourSayPage HaveYourSayPage = new HaveYourSayPage(_driver);
+            HaveYourSayPage.GoToDoYouHaveAQuestion();
+            DoYouHaveAQuestionToBBCPage DoYouHaveQuestionsToBBCPage = new DoYouHaveAQuestionToBBCPage(_driver);
+            
+            //Act
+            DoYouHaveQuestionsToBBCPage.FillTheForm("", "", "", "", "");
+            DoYouHaveQuestionsToBBCPage.SubmitForm();
+
+            //Assert
+            var errors = DoYouHaveQuestionsToBBCPage.GetErrors();
+            Assert.IsTrue(errors.Any());
+            Assert.IsTrue(errors.Contains(_emailMissingErrorText));
+            Assert.IsTrue(errors.Contains(_nameMissingErrorText));
+            Assert.IsTrue(errors.Contains(_formTextErrorText));
         }
 
         [TestMethod]
-        public void VerifySubmission_EmptyForm_ErrorsAppears()
+        public void SubmitingForm_EmptyName_AllErrorsApeared()
         {
             //Arrange
-            GoToSubmissionForm();
-            var textErrorXpath = "/html/body/div[2]/div[6]/div/div[5]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/div[1]/div[2]";
-            var nameErrorXpath = "/html/body/div[2]/div[6]/div/div[5]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/div[3]/div[1]/div/label/div";
-            var emailErrorXpath = "/html/body/div[2]/div[6]/div/div[5]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/div[3]/div[2]/div/label/div";
+            GoToNews();
+            BBCNewsPage BBCNewsPage = new BBCNewsPage(_driver);
+            BBCNewsPage.GoToHaveYourSay();
+            HaveYourSayPage HaveYourSayPage = new HaveYourSayPage(_driver);
+            HaveYourSayPage.GoToDoYouHaveAQuestion();
+            DoYouHaveAQuestionToBBCPage DoYouHaveQuestionsToBBCPage = new DoYouHaveAQuestionToBBCPage(_driver);
 
-            //Act           
-            string submitXPath = "/html/body/div[2]/div[6]/div/div[5]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/div[5]/button";
-            _bbcFacade.ClickOnXPath(submitXPath);
+            //Act
+            DoYouHaveQuestionsToBBCPage.FillTheForm("Some case", "", "masha@gmail.com", "", "");
+            DoYouHaveQuestionsToBBCPage.SubmitForm();
 
-            //Assert            
-            Assert.IsTrue(VerifyElemetAppearance(textErrorXpath));
-            Assert.IsTrue(VerifyElemetAppearance(nameErrorXpath));
-            Assert.IsTrue(VerifyElemetAppearance(emailErrorXpath));
+            //Assert
+            var errors = DoYouHaveQuestionsToBBCPage.GetErrors();
+            Assert.AreEqual(1, errors.Count());
+            Assert.IsTrue(errors.Contains(_nameMissingErrorText));
         }
 
-        private bool VerifyElemetAppearance(string xPath)
+        [TestMethod]
+        public void SubmitingForm_EmptyEmail_AllErrorsApeared()
         {
-            try
-            {
-                var bigErrorElement = _driver.FindElement(By.XPath(xPath));
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
+            //Arrange
+            GoToNews();
+            BBCNewsPage BBCNewsPage = new BBCNewsPage(_driver);
+            BBCNewsPage.GoToHaveYourSay();
+            HaveYourSayPage HaveYourSayPage = new HaveYourSayPage(_driver);
+            HaveYourSayPage.GoToDoYouHaveAQuestion();
+            DoYouHaveAQuestionToBBCPage DoYouHaveQuestionsToBBCPage = new DoYouHaveAQuestionToBBCPage(_driver);
+
+            //Act
+            DoYouHaveQuestionsToBBCPage.FillTheForm("Some case", "Masha", "", "", "");
+            DoYouHaveQuestionsToBBCPage.SubmitForm();
+
+            //Assert
+            var errors = DoYouHaveQuestionsToBBCPage.GetErrors();
+            Assert.AreEqual(1, errors.Count());
+            Assert.IsTrue(errors.Contains(_emailMissingErrorText));
         }
 
+        [TestMethod]
+        public void SubmitingForm_BigForm_AllErrorsApeared()
+        {
+            //Arrange
+            GoToNews();
+            BBCNewsPage BBCNewsPage = new BBCNewsPage(_driver);
+            BBCNewsPage.GoToHaveYourSay();
+            HaveYourSayPage HaveYourSayPage = new HaveYourSayPage(_driver);
+            HaveYourSayPage.GoToDoYouHaveAQuestion();
+            DoYouHaveAQuestionToBBCPage DoYouHaveQuestionsToBBCPage = new DoYouHaveAQuestionToBBCPage(_driver);
+
+            //Act
+            const string bigText = "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567891";
+            DoYouHaveQuestionsToBBCPage.FillTheForm(bigText, "", "masha@gmail.com", "", "");
+            DoYouHaveQuestionsToBBCPage.SubmitForm();
+
+            //Assert
+            var errors = DoYouHaveQuestionsToBBCPage.GetErrors();
+            var formText = DoYouHaveQuestionsToBBCPage.GetFormText();
+            Assert.IsTrue(bigText.Contains(formText));
+            Assert.AreEqual(DoYouHaveAQuestionToBBCPage.MaxFormLength, formText.Length);
+            Assert.IsTrue(bigText.Length > formText.Length);
+        }
     }
 }
