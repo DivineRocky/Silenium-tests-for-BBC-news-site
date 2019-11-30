@@ -79,15 +79,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BBCSiteFacade.cs" />
     <Compile Include="PageObjects\BBCNewsPage.cs" />
-    <Compile Include="BBCTestsBase.cs" />
+    <Compile Include="UnitTests\BBCTestsBase.cs" />
     <Compile Include="PageObjects\BBCMainPage.cs" />
     <Compile Include="PageObjects\DoYouHaveAQuestionToBBCPage.cs" />
     <Compile Include="PageObjects\HaveYourSayPage.cs" />
     <Compile Include="PageObjects\SearchPage.cs" />
-    <Compile Include="SecondTaskBBCTests.cs" />
+    <Compile Include="UnitTests\SecondTaskBBCTests.cs" />
     <Compile Include="SpecFlowFeature1Steps.cs" />
-    <Compile Include="FirstTaskBBCTests.cs" />
+    <Compile Include="UnitTests\FirstTaskBBCTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

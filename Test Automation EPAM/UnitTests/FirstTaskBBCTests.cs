@@ -10,8 +10,7 @@ namespace Test_Automation_EPAM
         [TestMethod]
         public void GoToBBCNewsTab()
         {
-            BBCMainPage BBCMainPage = new BBCMainPage(_driver);
-            BBCMainPage.GoToNews();
+            bBCSiteFacade.GoToNews();
         }
 
         [TestMethod]
@@ -27,9 +26,7 @@ namespace Test_Automation_EPAM
             expectedResults.Add("Tesla truck has 150,000 orders despite launch gaffe");
 
             //Act
-            GoToNews();
-            BBCNewsPage BBCNewsPage = new BBCNewsPage(_driver);
-            var articleTitles = BBCNewsPage.GetArticleTitles();
+            var articleTitles = bBCSiteFacade.GetFirstNewsTitles();
             
             //Assert
             foreach (var expectedResult in expectedResults)
@@ -39,18 +36,10 @@ namespace Test_Automation_EPAM
         }
 
         [TestMethod]
-        public void VerifySearchBar()
+        public void Search_NormalInput_NoErrors()
         {
             //Arrange
-            GoToNews();
-            BBCNewsPage BBCNewsPage = new BBCNewsPage(_driver);
-            var keyWord = BBCNewsPage.GetKeyWord();
-            BBCNewsPage.Search(keyWord);
-            SearchPage SearchPage = new SearchPage(_driver);
-            var searchResult = SearchPage.GetSearchText();
-
-            //Assert
-            Assert.AreEqual(keyWord, searchResult);
+            bBCSiteFacade.SearchForFirstTagFromNews();
         }
     }
 }

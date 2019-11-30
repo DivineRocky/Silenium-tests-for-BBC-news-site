@@ -5,7 +5,6 @@ namespace Test_Automation_EPAM
 {
     internal class SearchPage
     {
-
         public SearchPage(IWebDriver driver)
         {
             PageFactory.InitElements(driver, this);

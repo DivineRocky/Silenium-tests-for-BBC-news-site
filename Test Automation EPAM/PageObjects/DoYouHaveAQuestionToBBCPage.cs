@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -47,6 +48,11 @@ namespace Test_Automation_EPAM
         public void SubmitForm()
         {
             submitButton.Click();
+            var errors = GetErrors();
+            if (errors.Any())
+            {
+                throw new ArgumentException(errors.First());
+            }
         }      
         
         public string GetFormText()
@@ -54,7 +60,7 @@ namespace Test_Automation_EPAM
             return questionForm.GetAttribute("value");
         }
 
-        public IEnumerable<string> GetErrors()
+        private IEnumerable<string> GetErrors()
         {
             return formError?.Select(x => x.Text);
         }
