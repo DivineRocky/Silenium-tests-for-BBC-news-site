@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BBCTests2Steps.cs" />
     <Compile Include="BL\BBCSiteFacade.cs" />
     <Compile Include="PageObjects\BBCNewsPage.cs" />
     <Compile Include="UnitTests\BBCTestsBase.cs" />
@@ -87,13 +88,12 @@
     <Compile Include="PageObjects\HaveYourSayPage.cs" />
     <Compile Include="PageObjects\SearchPage.cs" />
     <Compile Include="UnitTests\SecondTaskBBCTests.cs" />
-    <Compile Include="SpecFlowFeature1Steps.cs" />
     <Compile Include="UnitTests\FirstTaskBBCTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="SpecFlowFeature1.feature" />
+    <None Include="BBCTests2.feature" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
