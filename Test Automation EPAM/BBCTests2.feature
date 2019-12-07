@@ -1,7 +1,7 @@
 ﻿Feature: BBCTests2
 	In order to ask the BBC team a question
 	As an avid BBC News reader
-	I want to be able to send Question Form
+	I want to be able to send a Question Form
 
 Scenario: Submission completed successfully
 	Given I want to ask a question to BBC Team
