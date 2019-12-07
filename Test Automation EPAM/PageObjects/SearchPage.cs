@@ -1,17 +1,15 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 
-namespace Test_Automation_EPAM
+namespace PageObjects
 {
-    internal class SearchPage
+    public class SearchPage: BbcBasePageObject
     {
         public SearchPage(IWebDriver driver)
+            :base(driver)
         {
-            PageFactory.InitElements(driver, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='se-searchbox-input-field']")]
-        private IWebElement searchResult;
+        private IWebElement searchResult => Driver.FindElement(By.XPath("//*[@id='se-searchbox-input-field']"));
 
         public string GetSearchText()
         {

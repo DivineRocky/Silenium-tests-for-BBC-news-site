@@ -1,40 +1,26 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Test_Automation_EPAM
+namespace PageObjects
 {
-    internal class DoYouHaveAQuestionToBBCPage
+    public class DoYouHaveAQuestionToBBCPage : BbcBasePageObject
     {
-        public DoYouHaveAQuestionToBBCPage(IWebDriver driver)
+        public DoYouHaveAQuestionToBBCPage(IWebDriver driver) 
+            : base(driver)
         {
-            PageFactory.InitElements(driver, this);
         }
 
         public static int MaxFormLength => 140;
 
-        [FindsBy(How = How.XPath, Using = ".//*[@class='text-input--long']")]
-        private IWebElement questionForm;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@placeholder='Name']")]
-        private IWebElement name;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@placeholder='Email address']")]
-        private IWebElement email;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@placeholder='Age']")]
-        private IWebElement age;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@placeholder='Postcode']")]
-        private IWebElement postcode;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@class='button-container']")]
-        private IWebElement submitButton;
-
-        [FindsBy(How = How.XPath, Using = "(.//*[@class='input-error-message'])")]
-        private IList<IWebElement> formError;
+        private IWebElement questionForm => Driver.FindElement(By.XPath(".//*[@class='text-input--long']"));
+        private IWebElement name => Driver.FindElement(By.XPath(".//*[@placeholder='Name']"));
+        private IWebElement email => Driver.FindElement(By.XPath(".//*[@placeholder='Email address']"));
+        private IWebElement age => Driver.FindElement(By.XPath(".//*[@placeholder='Age']"));
+        private IWebElement postcode => Driver.FindElement(By.XPath(".//*[@placeholder='Postcode']"));
+        private IWebElement submitButton => Driver.FindElement(By.XPath(".//*[@class='button-container']"));
+        private IList<IWebElement> formError => Driver.FindElements(By.XPath("(.//*[@class='input-error-message'])"));
 
         public void FillTheForm(string requestForm, string nameForm, string emailForm, string ageForm, string postcodeForm)
         {

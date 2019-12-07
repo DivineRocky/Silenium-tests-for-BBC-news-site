@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Test_Automation_EPAM.BL;
+﻿using BusinessLogic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Test_Automation_EPAM
+namespace UnitTests
 {
     [TestClass]
     public class BBCTestsBase

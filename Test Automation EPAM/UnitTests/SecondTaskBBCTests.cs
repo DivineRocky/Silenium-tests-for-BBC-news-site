@@ -1,8 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Test_Automation_EPAM.BL;
 
-namespace Test_Automation_EPAM
+namespace UnitTests
 {
     [TestClass]
     public class SecondTaskBBCTests : BBCTestsBase
@@ -10,7 +9,6 @@ namespace Test_Automation_EPAM
         private const string _nameMissingErrorText = "Name can't be blank";
         private const string _emailMissingErrorText = "Email address can't be blank";
         private const string _formTextErrorText = "can't be blank";
-        private BBCSiteFacade bBCSiteFacade;
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException), _formTextErrorText)]

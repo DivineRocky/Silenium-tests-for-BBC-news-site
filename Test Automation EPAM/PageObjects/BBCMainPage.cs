@@ -1,19 +1,16 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
-using System;
 
-namespace Test_Automation_EPAM
+namespace PageObjects
 {
-    internal class BBCMainPage
+    public class BBCMainPage: BbcBasePageObject
     {
         public BBCMainPage(IWebDriver driver)
+            :base(driver)
         {
             driver.Navigate().GoToUrl("https://www.bbc.com");
-            PageFactory.InitElements(this, new RetryingElementLocator(driver, TimeSpan.FromSeconds(20)));
         }
 
-        [FindsBy(How = How.XPath, Using = ".//*[@id='orb-nav-links']/ul/li[2]")]
-        public IWebElement bbcNewsPage;
+        private IWebElement bbcNewsPage => Driver.FindElement(By.XPath(".//*[@id='orb-nav-links']/ul/li[2]"));
 
         public void GoToNews()
         {

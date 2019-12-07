@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Test_Automation_EPAM
+namespace UnitTests
 {
     [TestClass]
     public class FirstTaskBBCTests : BBCTestsBase
@@ -24,6 +24,7 @@ namespace Test_Automation_EPAM
             expectedResults.Add("'We are protesting with a peaceful marathon'");
             expectedResults.Add("US Justice Ruth Bader Ginsburg hospitalised");
             expectedResults.Add("Tesla truck has 150,000 orders despite launch gaffe");
+            bBCSiteFacade.GoToNews();
 
             //Act
             var articleTitles = bBCSiteFacade.GetFirstNewsTitles();

@@ -1,34 +1,22 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Test_Automation_EPAM
+namespace PageObjects
 {
-    internal class BBCNewsPage
+    public class BBCNewsPage:BbcBasePageObject
     {
         public BBCNewsPage(IWebDriver driver)
+            :base(driver)
         {
-            PageFactory.InitElements(driver, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "//a[contains(@class, 'gs-c-promo-heading gs-o-faux-block-link__overlay-link')]")]
-        private IList<IWebElement> headliners;
-
-        [FindsBy(How = How.XPath, Using = "(.//*[@class='nw-c-promo-meta']/a/span[1])[1]")]
-        private IWebElement keyWord;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@id='orb-search-q']")]
-        private IWebElement searchBar;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@id='orb-search-button']")]
-        private IWebElement searchButton;
-
-        [FindsBy(How = How.XPath, Using = ".//*[@class='nw-c-nav__wide']/ul/li[15]/span/button")]
-        private IWebElement moreButton;
-
-        [FindsBy(How = How.XPath, Using = "(//*[@class='nw-c-nav__wide-overflow-list gel-layout']/ul/li/a)[4]")]
-        private IWebElement haveYourSayLink;
+        private IList<IWebElement> headliners => Driver.FindElements(By.XPath("//a[contains(@class, 'gs-c-promo-heading gs-o-faux-block-link__overlay-link')]"));
+        private IWebElement keyWord => Driver.FindElement(By.XPath("(.//*[@class='nw-c-promo-meta']/a/span[1])[1]"));
+        private IWebElement searchBar => Driver.FindElement(By.XPath(".//*[@id='orb-search-q']"));
+        private IWebElement searchButton => Driver.FindElement(By.XPath(".//*[@id='orb-search-button']"));
+        private IWebElement moreButton => Driver.FindElement(By.XPath(".//*[@class='nw-c-nav__wide']/ul/li[15]/span/button"));
+        private IWebElement haveYourSayLink => Driver.FindElement(By.XPath("(//*[@class='nw-c-nav__wide-overflow-list gel-layout']/ul/li/a)[4]"));
 
         public IEnumerable<string> GetArticleTitles()
         {

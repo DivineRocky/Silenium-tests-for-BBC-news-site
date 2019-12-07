@@ -1,9 +1,12 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using PageObjects;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
-namespace Test_Automation_EPAM.BL
+namespace BusinessLogic
 {
     public class BBCSiteFacade : IDisposable
     {
@@ -18,7 +21,7 @@ namespace Test_Automation_EPAM.BL
 
         public BBCSiteFacade()
         {
-            webDriver = new ChromeDriver();
+            webDriver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             webDriver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 7);
             webDriver.Manage().Window.Maximize();
             questionToBBCPage = new DoYouHaveAQuestionToBBCPage(webDriver);
@@ -42,7 +45,6 @@ namespace Test_Automation_EPAM.BL
 
         public IEnumerable<string> GetFirstNewsTitles()
         {
-            GoToNews();
             return bBCNewsPage.GetArticleTitles();
         }
 

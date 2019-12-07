@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Automation EPAM", "Test Automation EPAM\Test Automation EPAM.csproj", "{308D1A84-4970-41FC-9042-DE8409393116}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PageObjects", "Test Automation EPAM\PageObjects\PageObjects.csproj", "{F55EF854-0FB8-4558-907F-2CABDF654FA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "Test Automation EPAM\BusinessLogic\BusinessLogic.csproj", "{8FAD0F7C-88E8-49BF-B46A-E51B4C3A160F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "Test Automation EPAM\UnitTests\UnitTests.csproj", "{92CAB11E-7404-4148-B3D9-E9671D033570}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowTests", "Test Automation EPAM\SpecFlowTests\SpecFlowTests.csproj", "{F0CB1685-672D-44A7-8423-75BFB5C971D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{308D1A84-4970-41FC-9042-DE8409393116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{308D1A84-4970-41FC-9042-DE8409393116}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{308D1A84-4970-41FC-9042-DE8409393116}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{308D1A84-4970-41FC-9042-DE8409393116}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55EF854-0FB8-4558-907F-2CABDF654FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55EF854-0FB8-4558-907F-2CABDF654FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55EF854-0FB8-4558-907F-2CABDF654FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55EF854-0FB8-4558-907F-2CABDF654FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FAD0F7C-88E8-49BF-B46A-E51B4C3A160F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAD0F7C-88E8-49BF-B46A-E51B4C3A160F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAD0F7C-88E8-49BF-B46A-E51B4C3A160F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAD0F7C-88E8-49BF-B46A-E51B4C3A160F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92CAB11E-7404-4148-B3D9-E9671D033570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92CAB11E-7404-4148-B3D9-E9671D033570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92CAB11E-7404-4148-B3D9-E9671D033570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92CAB11E-7404-4148-B3D9-E9671D033570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0CB1685-672D-44A7-8423-75BFB5C971D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0CB1685-672D-44A7-8423-75BFB5C971D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0CB1685-672D-44A7-8423-75BFB5C971D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0CB1685-672D-44A7-8423-75BFB5C971D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,17 +1,15 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 
-namespace Test_Automation_EPAM
+namespace PageObjects
 {
-    internal class HaveYourSayPage
+    public class HaveYourSayPage : BbcBasePageObject
     {
-        public HaveYourSayPage(IWebDriver driver)
+        public HaveYourSayPage(IWebDriver driver) 
+            : base(driver)
         {
-            PageFactory.InitElements(driver, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "(.//*[@ class='nw-c-5-slice gel-layout gel-layout--equal b-pw-1280']/div[1]/div/div[2]/div/a)[1]")]
-        private IWebElement doYouHaveAQuestion;
+        private IWebElement doYouHaveAQuestion => Driver.FindElement(By.XPath("(.//*[@ class='nw-c-5-slice gel-layout gel-layout--equal b-pw-1280']/div[1]/div/div[2]/div/a)[1]"));
 
         public void GoToDoYouHaveAQuestion()
         {
