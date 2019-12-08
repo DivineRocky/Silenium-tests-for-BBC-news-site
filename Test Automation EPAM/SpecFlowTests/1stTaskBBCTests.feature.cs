@@ -19,23 +19,23 @@ namespace SpecFlowTests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("BBCTest1", Description="\tIn order to read News on BBC\r\n\tAs an avid News reader\r\n\tI want to be able to rea" +
-        "d News and look for them on BBC Website ", SourceFile="SpecFlowFeature1.feature", SourceLine=0)]
-    public partial class BBCTest1Feature
+    [TechTalk.SpecRun.FeatureAttribute("1stTaskBBCTests", Description="\tIn order to read News on BBC\r\n\tAs an avid News reader\r\n\tI want to be able to rea" +
+        "d News and look for them on BBC Website ", SourceFile="1stTaskBBCTests.feature", SourceLine=0)]
+    public partial class _1StTaskBBCTestsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "SpecFlowFeature1.feature"
+#line 1 "1stTaskBBCTests.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BBCTest1", "\tIn order to read News on BBC\r\n\tAs an avid News reader\r\n\tI want to be able to rea" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "1stTaskBBCTests", "\tIn order to read News on BBC\r\n\tAs an avid News reader\r\n\tI want to be able to rea" +
                     "d News and look for them on BBC Website ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }

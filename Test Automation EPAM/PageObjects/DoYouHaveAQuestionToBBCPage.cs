@@ -17,18 +17,14 @@ namespace PageObjects
         private IWebElement questionForm => Driver.FindElement(By.XPath(".//*[@class='text-input--long']"));
         private IWebElement name => Driver.FindElement(By.XPath(".//*[@placeholder='Name']"));
         private IWebElement email => Driver.FindElement(By.XPath(".//*[@placeholder='Email address']"));
-        private IWebElement age => Driver.FindElement(By.XPath(".//*[@placeholder='Age']"));
-        private IWebElement postcode => Driver.FindElement(By.XPath(".//*[@placeholder='Postcode']"));
         private IWebElement submitButton => Driver.FindElement(By.XPath(".//*[@class='button-container']"));
         private IList<IWebElement> formError => Driver.FindElements(By.XPath("(.//*[@class='input-error-message'])"));
 
-        public void FillTheForm(string requestForm, string nameForm, string emailForm, string ageForm, string postcodeForm)
+        public void FillTheForm(string requestForm, string nameForm, string emailForm)
         {
             questionForm.SendKeys(requestForm);
             name.SendKeys(nameForm);
             email.SendKeys(emailForm);
-            age.SendKeys(ageForm);
-            postcode.SendKeys(postcodeForm);
         }
 
         public void SubmitForm()

@@ -31,10 +31,10 @@ namespace BusinessLogic
             searchPage = new SearchPage(webDriver);
         }
 
-        public void AskQuestion(string requestForm, string nameForm, string emailForm, string ageForm, string postcodeForm)
+        public void AskQuestion(string requestForm, string nameForm, string emailForm)
         {
             GoToQuestionForm();
-            questionToBBCPage.FillTheForm(requestForm, nameForm, emailForm, ageForm, postcodeForm);
+            questionToBBCPage.FillTheForm(requestForm, nameForm, emailForm);
             questionToBBCPage.SubmitForm();
         }
         
